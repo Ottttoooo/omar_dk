@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kumbh+Sans:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Diorama Production</title>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="navbar-container">
+          <a href="#" class="logo"><h1>DIORAMAPRODUCTION</h1></a>
+          <ul class="navbar-menu">
+            <li class="navbar-item">
+              <a href="#" class="navbar-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="navbar-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="#about" class="navbar-link">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-container">
+          <div class="hero-text">
+            <h1>Omar Al-Dakkak</h1>
+            <p>Freelance Cinematographer and Video Editor</p>
+            <p>Karlstad, Sweeden</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="content" id="content">
+        <div class="content-container" id="content-container"></div>
+      </section>
+
+      <section class="about" id="about">
+        <img src="img/Omar.webp" alt="Omar" srcset="" />
+        <div class="about-text">
+          <h2>Omar Al Dakkak</h2>
+          <p>
+            As a creative individual, this is something that has attracted me to
+            pursue a career in this industry. I’ve had the chance to work on
+            several projects, but am always looking for new opportunities to
+            expand my horizons and develop my skillset. Get in touch for
+            additional information about my past work.
+          </p>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <div class="form-container">
+          <form id="contact-form">
+            <h2>Contact Me</h2>
+            <div class="form-group">
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+            <div class="form-group">
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+            <div class="form-group">
+              <label for="message">Message:</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-container">
+        <a href="#" class="footer-item">Home</a>
+        <a href="#" class="footer-item">Contact</a>
+        <a href="#about" class="footer-item">About</a>
+      </div>
+      <p class="website__rights">© NEXT 2020. All rights reserved</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
