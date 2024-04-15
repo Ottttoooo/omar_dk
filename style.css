@@ -404,5 +404,10 @@ footer {
   
   .about-container{
     height: auto;
+    padding: 50px;
+  }
+
+  .image-container{
+    min-width: 200px;
   }
 }
