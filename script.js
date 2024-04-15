@@ -1,3 +1,34 @@
+document.getElementById("scrollButton").addEventListener("click", function () {
+  const targetSection = document.getElementById("contact");
+  if (targetSection) {
+    targetSection.scrollIntoView({ behavior: "smooth" });
+  }
+});
+
+document
+  .getElementById("menuButton-container")
+  .addEventListener("click", function () {
+    var nav = document.getElementById("pop-menu");
+    if (nav.style.display === "flex") {
+      nav.style.display = "none";
+    } else {
+      nav.style.display = "flex";
+    }
+  });
+
+const popLinks = document.querySelectorAll(".pop-link");
+
+popLinks.forEach(function (popLink) {
+  popLink.addEventListener("click", function (event) {
+    var nav = document.getElementById("pop-menu");
+    if (nav.style.display === "flex") {
+      nav.style.display = "none";
+    } else {
+      nav.style.display = "flex";
+    }
+  });
+});
+
 const contentfulClient = contentful.createClient({
   accessToken: "Hb_pGA3h19HsSpdEmJEsnM4N_Gg0z4bq8tvx1J9PY4w",
   space: "8swtev1r1drx",
@@ -99,9 +130,9 @@ function renderVideo(video) {
       '<video class="stock-videos" src="' +
       video.fields.file.url +
       '" width="100%">Your browser does not support the video tag.</video>' +
-      '<h3>'+
+      "<h3>" +
       video.fields.title +
-      '</h3>'
+      "</h3>"
     );
   }
 }

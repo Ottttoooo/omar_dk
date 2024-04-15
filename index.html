@@ -17,17 +17,34 @@
       <nav class="navbar">
         <div class="navbar-container">
           <a href="#" class="logo"><h1>DIORAMAPRODUCTION</h1></a>
-          <ul class="navbar-menu">
+          <ul class="navbar-menu" id="navbar-menu">
             <li class="navbar-item">
               <a href="#" class="navbar-link">Home</a>
             </li>
-            <li class="nav-item">
-              <a href="#" class="navbar-link">Contact</a>
-            </li>
-            <li class="nav-item">
+            <li class="navbar-item">
               <a href="#about" class="navbar-link">About</a>
             </li>
+            <li class="navbar-item">
+              <a href="#contact" class="navbar-link">Contact</a>
+            </li>
           </ul>
+          <div id="menuButton-container">
+            <button id="menuButton">MENU</button>
+          </div>
+          
+          <div class="pop-menu" id="pop-menu">
+            <ul id="pop-menu-list">
+              <li class="pop-item">
+                <a href="#" class="pop-link">Home</a>
+              </li>
+              <li class="pop-item">
+                <a href="#about" class="pop-link">About</a>
+              </li>
+              <li class="pop-item">
+                <a href="#contact" class="pop-link">Contact</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </header>
@@ -39,6 +56,7 @@
             <h1>Omar Al-Dakkak</h1>
             <p>Freelance Cinematographer and Video Editor</p>
             <p>Karlstad, Sweeden</p>
+            <button class="hero-btn" id="scrollButton">Get In Touch</button>
           </div>
         </div>
       </section>
@@ -88,7 +106,7 @@
         <a href="#" class="footer-item">Contact</a>
         <a href="#about" class="footer-item">About</a>
       </div>
-      <p class="website__rights">© NEXT 2020. All rights reserved</p>
+      <p class="website__rights">© Diorama Production 2024. All rights reserved</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
