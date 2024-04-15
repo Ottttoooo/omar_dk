@@ -144,6 +144,7 @@ main {
   background-image: url(img/hero_img.jpg);
   background-size: cover;
   height: 100vh;
+  width: 100%;
   color: #cccccc;
   display: flex;
   align-items: center;
@@ -195,7 +196,7 @@ main {
   display: grid;
   background-color: #dbdbdb;
   padding: 40px 20px;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
   grid-gap: 6em 6em;
   justify-items: center;
 }
@@ -206,6 +207,7 @@ main {
   border: #fff;
   border-style: solid;
   width: 500px;
+  max-width: 50vw;
   padding: 30px;
 }
 
@@ -232,6 +234,7 @@ main {
 /* Ensure that all parts of the controls match */
 .stock-videos::-webkit-media-controls-panel {
   padding: 5px; /* Slight padding around controls */
+  max-width: 100%;
 }
 
 /* Enhance the user interaction experience */
@@ -267,7 +270,7 @@ main {
 
 .image-container {
   float: left;
-  min-width: 300px;
+  min-width: 0px;
   width: 30%;
   margin-right: 20px;
 }
@@ -408,6 +411,12 @@ footer {
   }
 
   .image-container{
-    min-width: 200px;
+    min-width: 80%;
+  }
+}
+
+@media (max-width: 432px) {
+  .logo {
+    display: none;
   }
 }
