@@ -1,3 +1,4 @@
+// Pop Nav Menu
 document.getElementById("scrollButton").addEventListener("click", function () {
   const targetSection = document.getElementById("contact");
   if (targetSection) {
@@ -29,12 +30,15 @@ popLinks.forEach(function (popLink) {
   });
 });
 
+
+
+// Content Fetcher
 const contentfulClient = contentful.createClient({
-  accessToken: "Hb_pGA3h19HsSpdEmJEsnM4N_Gg0z4bq8tvx1J9PY4w",
-  space: "8swtev1r1drx",
+  accessToken: "QggAadGYoWkmhBKIhdcNog4z42uFNzmzh9ZjbIG8Wr4",
+  space: "6jy52b0mp44n",
 });
 
-const container = document.getElementById("content-container");
+const container = document.getElementById("content-section");
 
 contentfulClient
   .getEntries({
@@ -42,11 +46,19 @@ contentfulClient
   })
   .then(function (entries) {
     container.innerHTML = renderVideos(entries.items);
+    // Initialize
+    initializeSlider();
   });
 
 function renderVideos(Videos) {
   return (
-    '<div class="Videos">' + Videos.map(renderSingleVideo).join("\n") + "</div>"
+    '<div class="carousel">' +
+    '<div id="video-slider">' +
+    Videos.map(renderSingleVideo).join("\n") +
+    "</div>" +
+    '<button class="slideButtons" onclick="slideLeft()">❮</button>' +
+    '<button class="slideButtons" onclick="slideRight()">❯</button>' +
+    '</div>'
   );
 }
 
@@ -57,108 +69,65 @@ function renderSingleVideo(Video) {
     '<div class="Video-in-list">' +
     '<div class="Video-video">' +
     renderVideo(fields.video) +
-    "</div>" +
-    '<div class="video-details">' +
-    // renderVideoDetails(fields) +
-    "</div>" +
-    "</div>"
-  );
-  console.log("after renderVideos");
-}
-
-function renderVideoDetails(fields) {
-  return (
-    renderVideoHeader(fields) +
-    '<p class="Video-categories">' +
-    fields.categories
-      .map(function (category) {
-        return category.fields.title;
-      })
-      .join(", ") +
-    "</p>" +
-    "<p>" +
-    marked(fields.VideoDescription) +
-    "</p>" +
-    "<p>" +
-    fields.price +
-    " &euro;</p>" +
-    '<p class="Video-tags"><span>Tags:</span> ' +
-    fields.tags.join(", ") +
-    "</p>"
-  );
-}
-
-function renderVideoHeader(fields) {
-  return (
-    '<div class="Video-header">' +
-    "<h2>" +
-    '<a href="Video/' +
-    fields.slug +
-    '">' +
-    fields.VideoName +
-    "</a>" +
+    '</div>' +
+    '<h2 class="video-title">' +
+    fields.videoTitle +
     "</h2>" +
-    " by " +
-    '<a href="brand/' +
-    fields.brand.sys.id +
-    '">' +
-    fields.brand.fields.companyName +
-    "</a>" +
     "</div>"
   );
 }
 
-function renderImage(image, slug) {
-  if (image && image.fields.file) {
+function renderVideo(Video) {
+  if (Video) {
     return (
-      '<a href="Video/' +
-      slug +
-      '">' +
-      '<img src="' +
-      image.fields.file.url +
-      '" width="150" height="150" />' +
-      "</a>"
-    );
-  } else {
-    return "";
-  }
-}
-
-function renderVideo(video) {
-  if (video) {
-    return (
-      '<video class="stock-videos" src="' +
-      video.fields.file.url +
-      '" width="100%">Your browser does not support the video tag.</video>' +
-      "<h3>" +
-      video.fields.title +
-      "</h3>"
+      '<video class="stock-videos" controls src="' +
+      Video.fields.file.url +
+      '" width="100%" >Your browser does not support the video tag.</video>'
     );
   }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  const container = document.getElementById("content-container");
+function getWidthIncludingMargins(element) {
+  const computedStyle = window.getComputedStyle(element);
+  const marginLeft = parseFloat(computedStyle.marginLeft);
+  const marginRight = parseFloat(computedStyle.marginRight);
+  const widthIncludingMargins = element.offsetWidth + marginLeft + marginRight;
+  return widthIncludingMargins;
+}
 
-  // Delegate mouseenter event
-  container.addEventListener(
-    "mouseenter",
-    function (event) {
-      if (event.target.tagName === "VIDEO") {
-        event.target.controls = true;
-      }
-    },
-    true
-  ); // Using capture phase to ensure the video element gets the event
+function initializeSlider() {
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.Video-in-list');
+  const totalSlides = slides.length;
 
-  // Delegate mouseleave event
-  container.addEventListener(
-    "mouseleave",
-    function (event) {
-      if (event.target.tagName === "VIDEO") {
-        event.target.controls = false;
-      }
-    },
-    true
-  ); // Using capture phase to ensure the video element gets the event
-});
+  // Check if slides are properly selected
+  if (totalSlides === 0) {
+    console.error('No elements with the class "Video-in-list" found.');
+    return;
+  }
+
+  function showSlides() {
+    const slideWidth = getWidthIncludingMargins(slides[0]);
+    console.log(slides[0].clientWidth)
+    document.querySelector('#video-slider').style.transform = `translateX(-${slideWidth * slideIndex}px)`;
+  }
+
+  function slideRight() {
+    slideIndex = (slideIndex + 1) % totalSlides;
+    showSlides();
+  }
+
+  function slideLeft() {
+    slideIndex = (slideIndex - 1 + totalSlides) % totalSlides;
+    showSlides();
+  }
+
+  // Expose functions to global scope for button clicks
+  window.slideRight = slideRight;
+  window.slideLeft = slideLeft;
+
+  // Initial call to display the first slide
+  showSlides();
+ 
+};
+

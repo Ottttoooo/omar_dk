@@ -1,3 +1,6 @@
+/* Import Google font - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -19,6 +22,7 @@ body {
   font-weight: 400;
   font-style: normal;
   width: 100%;
+  overflow-x: hidden;
 }
 
 section {
@@ -83,6 +87,7 @@ nav {
 
 .pop-item {
   height: 80px;
+  margin-bottom: 80px;
 }
 
 .pop-link {
@@ -117,8 +122,10 @@ nav {
 #pop-menu {
   display: none;
   position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background: rgba(0, 0, 0, 0.8); /* Semi-transparent white background */
   backdrop-filter: blur(10px); /* Blur the background */
   display: none;
@@ -126,7 +133,7 @@ nav {
 }
 
 #pop-menu-list {
-  border: solid 2px white;
+  font-size: 2em;
   width: 100%;
   align-content: center;
 }
@@ -175,82 +182,70 @@ main {
   background-color: #195319;
 }
 
-/* Content Section */
-
-.content {
-  display: flex;
-  background-color: #d1d1d1;
-  justify-items: center;
-}
-
-.content-container {
-  width: 100%;
-  display: flex;
-  background-color: #dbdbdb;
-  padding: 40px 20px;
-  justify-items: center;
-}
-
-.Videos {
-  width: 100%;
-  display: grid;
-  background-color: #dbdbdb;
-  padding: 40px 20px;
-  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
-  grid-gap: 6em 6em;
-  justify-items: center;
-}
-
-.content-card {
+/* content Section FINAL */
+.content-section {
+  padding: 100px 0px;
+  min-height: 80vh;
+  background-image: url(img/about-bg2.png);
+  background-size: cover;
   display: flex;
   justify-content: center;
-  border: #fff;
-  border-style: solid;
-  width: 500px;
-  max-width: 50vw;
-  padding: 30px;
+  align-items: center;
 }
 
-/* Video Style */
-
-/* Basic Reset */
-.stock-videos {
-  width: 100%; /* Responsive width */
-  height: auto; /* Maintain aspect ratio */
-  display: block; /* Remove any unwanted space below the video */
-  border-radius: 8px; /* Soft rounded corners for a modern look */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  outline: none; /* Remove outline on focus for cleaner look */
-  margin-bottom: 20px;
+.carousel {
+  width: 70%;
+  margin: 0 auto;
 }
 
-.stock-videos::-webkit-media-controls-play-button,
-.stock-videos::-webkit-media-controls-volume-slider,
-.stock-videos::-webkit-media-controls-mute-button,
-.stock-videos::-webkit-media-controls-fullscreen-button {
-  color: #333;
+#video-slider {
+  display: flex;
+  transition: transform 0.5s ease;
 }
 
-/* Ensure that all parts of the controls match */
-.stock-videos::-webkit-media-controls-panel {
-  padding: 5px; /* Slight padding around controls */
-  max-width: 100%;
+.Video-in-list{
+  flex: 0 0 100%;
+  padding: 0px 10px;
+  margin: 0px 50px;
+  text-align: center;
+  color: #d1d1d1;
 }
 
-/* Enhance the user interaction experience */
-.stock-videos:hover::-webkit-media-controls-panel {
-  box-shadow: black;
+.slideButtons {
+  cursor: pointer;
+  position: absolute;
+  top: 150%;
+  transform: translateY(-50%);
+  padding: 10px;
+  background: #339933;
+  color: #fff;
+  border: none;
+  z-index: 1000;
 }
+
+.slideButtons:first-of-type {
+  left: 100px;
+}
+
+.slideButtons:last-of-type {
+  right: 100px;
+} 
 
 .Video-video {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  width: 100%;
+  height: fit-content;
 }
 
-.Video-video > h3 {
-  text-transform: capitalize;
+.video-title {
+  margin-top: 20px;
 }
+
+.Video-video video{
+  width: 100%;
+}
+
+
+
 
 /* About */
 
@@ -263,16 +258,18 @@ main {
   background-size: cover;
   width: 100%;
   color: #dbdbdb;
-  padding: 100px;
-  text-align: justify;
+  padding: 40px;
   min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .image-container {
-  float: left;
-  min-width: 0px;
-  width: 30%;
-  margin-right: 20px;
+  min-width: 350px;
+  width: 25%;
+  margin: 0px 100px 30px 0px ;
 }
 
 #Omar {
@@ -280,20 +277,31 @@ main {
   height: auto;
 }
 
-.about-container > h2 {
-  margin-bottom: 20px;
-  font-size: 3em;
-  color: #996666;
+.about-text {
+  width: 600px;
+  line-height: 1.4;
 }
 
-.about-container > p {
-  font-size: 2em;
+.about-text > h2 {
+  margin-bottom: 10px;
+  font-size: 2.5em;
+  color: #AC4E25;
+}
+
+.about-text > p {
+  font-size: 1.3em;
   color: #d1d1d1;
+}
+
+@media screen and(max-width: 1200px){
+
 }
 
 /* Contact */
 .contact {
-  background-color: #d1d1d1;
+  background-image: url(img/landscape.jpg);
+  background-size: cover;
+  background-position: center;
   height: auto;
   padding: 20px;
   display: flex;
@@ -301,16 +309,17 @@ main {
 }
 
 .form-container {
-  max-width: 600px;
+  max-width: 800px;
   width: 80%;
   margin: 50px auto;
   padding: 20px;
-  border: 2px solid #ffff;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #162D46;
   border-radius: 5px;
 }
 
 form h2 {
-  color: 339933;
+  color: #162D46;
   margin-bottom: 20px;
 }
 
@@ -328,6 +337,7 @@ input[type="email"],
 textarea {
   width: 100%;
   padding: 10px;
+  background-color: #dbdbdb;
   border: 2px solid #ccc;
   border-radius: 5px;
 }
@@ -346,7 +356,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #339933;
+  background-color: #195319;
 }
 
 /* Footer */
@@ -380,7 +390,6 @@ footer {
 /* For Smartphones */
 
 @media (max-width: 740px) {
-
   .logo {
     font-size: 0.8em;
   }
@@ -394,23 +403,28 @@ footer {
   }
 
   .image-container {
-    margin-bottom: 20px;
+    margin-right: 0px;
+    margin-bottom: 10px;
   }
 
-  .about-container > h2 {
-    font-size: 2em;
+  .about-text {
+    text-align: center;
+    line-height: 1.6;
   }
-  
-  .about-container > p {
+
+  .about-text > h2 {
+    font-size: 2.5em;
+  }
+
+  .about-text > p {
     font-size: 1em;
   }
-  
-  .about-container{
+
+  .about-text {
     height: auto;
-    padding: 50px;
   }
 
-  .image-container{
+  .image-text {
     min-width: 80%;
   }
 }
