@@ -68,12 +68,20 @@
             <h1>Omar Al-Dakkak</h1>
             <p>Freelance Cinematographer and Video Editor</p>
             <p>Karlstad, Sweeden</p>
-            <button class="hero-btn" id="scrollButton">Get In Touch</button>
+            <button class="hero-btn" id="scrollButton"><strong>Get In Touch</strong></button>
           </div>
         </div>
       </section>
 
-      <section class="content-section" id="content-section"></section>
+      <section class="content-section" id="content-section">
+        <video autoplay muted loop playsinline class="background-video">
+          <source src="img/waves.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <div class="overlay"></div>
+        <div class="content" id="content">
+        </div>
+      </section>
 
       <section class="about" id="about">
         <div class="about-container clearfix">
@@ -99,25 +107,57 @@
           </div>
         </div>
       </section>
+
+      <section class="logos-section">
+        <h2>Companies I've Worked With</h2>
+        <div class="logos-container">
+          <div class="logo-item" id="copturre">
+            <img src="img/Logos/copturre.png" alt="Company 2 Logo">
+          </div>
+          <div class="logo-item" id="stora">
+            <img src="img/Logos/stora-enso.png" alt="Company 1 Logo">
+          </div>
+          <div class="logo-item" id="obo">
+            <img src="img/Logos/obo.png" alt="Company 7 Logo">
+          </div>
+          <div class="logo-item" id="karlstad">
+            <img src="img/Logos/karlstads-kommun.png" alt="Company 3 Logo">
+          </div>
+          <div class="logo-item" id="Kommunal">
+            <img src="img/Logos/Kommunal.jpg" alt="Company 4 Logo">
+          </div>
+          <div class="logo-item" id="Lant">
+            <img src="img/Logos/Lantmännen.png" alt="Company 5 Logo">
+          </div>
+          <div class="logo-item" id="Norrenergi">
+            <img src="img/Logos/Norrenergi.png" alt="Company 6 Logo">
+          </div>
+          
+          <div class="logo-item" id="TM">
+            <img src="img/Logos/TM.png" alt="Company 8 Logo">
+          </div>
+        </div>
+      </section>
       
       <section class="contact" id="contact">
         <div class="form-container">
-          <form id="contact-form" action="https://formsubmit.co/omar@dioramaproduktion.com" method="POST">
+          <form id="contact-form" action="https://formsubmit.co/your@email.com" method="POST">
+            
             <h2>Contact Me</h2>
             <input type="hidden" name="_subject" value="New Contact Form Submission">
             <div class="form-group">
-              <label for="name">Name:</label>
+              <label for="name"><strong>Name:</strong></label>
               <input type="text" id="name" name="name" required />
             </div>
             <div class="form-group">
-              <label for="email">Email:</label>
+              <label for="email"><strong>Email:</strong></label>
               <input type="email" id="email" name="email" required />
             </div>
             <div class="form-group">
-              <label for="message">Message:</label>
+              <label for="message"><strong>Message:</strong></label>
               <textarea id="message" name="message" required></textarea>
             </div>
-            <button type="submit">Send</button>
+            <button type="submit"><strong>Send</strong></button>
             <input type="hidden" name="_next" value="https://ottttoooo.github.io/omar_dk/thanks.html">
           </form>
         </div>
@@ -135,6 +175,8 @@
       </section>
     </main>
 
+
+
     <footer>
       <div class="footer-container">
         <a href="#" class="footer-item">Home</a>
@@ -147,6 +189,7 @@
       </p>
     </footer>
 
+    <script src="https://kit.fontawesome.com/3e84b8612e.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
     <script src="script.js"></script>
   </body>

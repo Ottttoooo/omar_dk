@@ -38,7 +38,7 @@ const contentfulClient = contentful.createClient({
   space: "6jy52b0mp44n",
 });
 
-const container = document.getElementById("content-section");
+const container = document.getElementById("content");
 
 contentfulClient
   .getEntries({
@@ -57,8 +57,8 @@ function renderVideos(Videos) {
     '<div id="video-slider">' +
     Videos.map(renderSingleVideo).join("\n") +
     "</div>" +
-    '<button class="slideButtons" onclick="slideLeft()">❮</button>' +
-    '<button class="slideButtons" onclick="slideRight()">❯</button>' +
+    '<button class="slideButtons" onclick="slideLeft()"><i class="fa-solid fa-arrow-left"></i></button>' +
+    '<button class="slideButtons" onclick="slideRight()"><i class="fa-solid fa-arrow-right"></i></button>' +
     '</div>'
   );
 }
