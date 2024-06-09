@@ -178,24 +178,30 @@ main {
 }
 
 .hero-btn:hover {
-  cursor: pointer;
   background-color: #195319;
 }
 
 /* content Section FINAL */
 .content-section {
-  padding: 100px 0px;
-  min-height: 80vh;
-  background-image: url(img/about-bg2.png);
-  background-size: cover;
+  padding-top: 100px;
+  padding-bottom: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
+  background: url(img/content-bg.jpg);
+  background-size: cover;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.7); /* Optional overlay color */;
 }
 
 .carousel {
+  z-index: 3;
   width: 70%;
   margin: 0 auto;
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
 #video-slider {
@@ -205,8 +211,8 @@ main {
 
 .Video-in-list{
   flex: 0 0 100%;
-  padding: 0px 10px;
-  margin: 0px 50px;
+  padding: 0px 40px;
+  margin: 0 auto;
   text-align: center;
   color: #d1d1d1;
 }
@@ -214,21 +220,25 @@ main {
 .slideButtons {
   cursor: pointer;
   position: absolute;
-  top: 150%;
   transform: translateY(-50%);
   padding: 10px;
   background: #339933;
   color: #fff;
   border: none;
+  border-radius: 4px;
   z-index: 1000;
 }
 
+.slideButtons:hover {
+  background-color: #195319;
+}
+
 .slideButtons:first-of-type {
-  left: 100px;
+  left: -10%;
 }
 
 .slideButtons:last-of-type {
-  right: 100px;
+  right: -10%;
 } 
 
 .Video-video {
@@ -244,13 +254,64 @@ main {
   width: 100%;
 }
 
+/* Media queries for responsive design */
+@media (max-width: 1200px) {
+  .carousel {
+    width: 80%;
+  }
+
+  .Video-in-list {
+    padding: 0px 40px;
+  }
+}
+
+@media (max-width: 992px) {
+  .carousel {
+    width: 90%;
+  }
+
+  .Video-in-list {
+    padding: 0px 15px;
+  }
+
+  .slideButtons:first-of-type {
+    left: -3%;
+  }
+  
+  .slideButtons:last-of-type {
+    right: -3%;
+  } 
+}
+
+@media (max-width: 768px) {
+  .carousel {
+    width: 100%;
+  }
+
+  .Video-in-list {
+    padding: 0px 10px;
+  }
+
+  .slideButtons {
+    top: 95%; /* Adjust position for smaller screens */
+  }
+
+  .slideButtons:first-of-type {
+    left: 50px;
+  }
+
+  .slideButtons:last-of-type {
+    right: 50px;
+  }
+}
+
 
 
 
 /* About */
-
 .about {
   width: 100%;
+  z-index: 100;
 }
 
 .about-container {
@@ -297,11 +358,32 @@ main {
 
 }
 
+/* Thanks */
+.thanks {
+  height: 100vh;
+  background-image: url(img/landscape.jpg);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(59, 59, 59, 0.7); /* Optional overlay color */;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d1d1d1;
+}
+
+.thanks-container {
+  padding: 100px;
+  text-align: center;
+}
+
 /* Contact */
 .contact {
   background-image: url(img/landscape.jpg);
   background-size: cover;
   background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(59, 59, 59, 0.7); /* Optional overlay color */;
   height: auto;
   padding: 20px;
   display: flex;

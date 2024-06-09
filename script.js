@@ -45,6 +45,7 @@ contentfulClient
     content_type: "video",
   })
   .then(function (entries) {
+    console.log(entries);
     container.innerHTML = renderVideos(entries.items);
     // Initialize
     initializeSlider();
@@ -64,11 +65,10 @@ function renderVideos(Videos) {
 
 function renderSingleVideo(Video) {
   var fields = Video.fields;
-  console.log(fields);
   return (
     '<div class="Video-in-list">' +
     '<div class="Video-video">' +
-    renderVideo(fields.video) +
+    renderVideo(fields) +
     '</div>' +
     '<h2 class="video-title">' +
     fields.videoTitle +
@@ -77,12 +77,14 @@ function renderSingleVideo(Video) {
   );
 }
 
-function renderVideo(Video) {
-  if (Video) {
+function renderVideo(fields) {
+  if (fields.video) {
     return (
       '<video class="stock-videos" controls src="' +
-      Video.fields.file.url +
-      '" width="100%" >Your browser does not support the video tag.</video>'
+      fields.video.fields.file.url +
+      '" width="100%" poster="' +
+      fields.thumbnail.fields.file.url +
+      '">Your browser does not support the video tag.</video>'
     );
   }
 }
@@ -106,10 +108,53 @@ function initializeSlider() {
     return;
   }
 
+
+  // Create an IntersectionObserver instance
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target.querySelector('video');
+      if (entry.isIntersecting) {
+        video.setAttribute('controls', 'controls');
+        // Force reflow
+        video.style.display = 'none';
+        video.offsetHeight; // Trigger reflow
+        video.style.display = 'block';
+      } else {
+        video.removeAttribute('controls');
+      }
+    });
+  }, {
+    threshold: 1 // Adjust as necessary to determine when the video is considered fully visible
+  });
+
+
+  // Observe each slide
+  slides.forEach(slide => {
+    observer.observe(slide);
+  });
+
   function showSlides() {
     const slideWidth = getWidthIncludingMargins(slides[0]);
-    console.log(slides[0].clientWidth)
-    document.querySelector('#video-slider').style.transform = `translateX(-${slideWidth * slideIndex}px)`;
+    document.querySelector('#video-slider').style.transform = `translateX(-${slideWidth * (slideIndex)}px)`;
+
+  // Remove the active class from all slides and remove controls from videos
+    slides.forEach(slide => {
+      slide.classList.remove('active');
+      const video = slide.querySelector('video');
+      video.removeAttribute('controls');
+    });
+
+    // Add the active class to the current slide and add controls to the active video
+    slides[slideIndex].classList.add('active');
+    const activeVideo = slides[slideIndex].querySelector('video');
+    activeVideo.setAttribute('controls', 'controls');
+
+    // // Force re-render by temporarily removing and re-adding the video element
+    // setTimeout(() => {
+    //   activeVideo.style.display = 'none';
+    //   activeVideo.offsetHeight; // Trigger reflow
+    //   activeVideo.style.display = 'block';
+    // }, 0);
   }
 
   function slideRight() {

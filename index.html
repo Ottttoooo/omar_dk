@@ -164,10 +164,12 @@
         </div>
       </section>
 
+      
       <section class="contact" id="contact">
         <div class="form-container">
-          <form id="contact-form">
+          <form id="contact-form" action="https://formsubmit.co/muhamadzaghlul@gmail.com" method="POST">
             <h2>Contact Me</h2>
+            <input type="hidden" name="_subject" value="New Contact Form Submission">
             <div class="form-group">
               <label for="name">Name:</label>
               <input type="text" id="name" name="name" required />
@@ -181,6 +183,7 @@
               <textarea id="message" name="message" required></textarea>
             </div>
             <button type="submit">Send</button>
+            <input type="hidden" name="_next" value="thanks.html">
           </form>
         </div>
       </section>
