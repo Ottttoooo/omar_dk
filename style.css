@@ -377,6 +377,15 @@ main {
   text-align: center;
 }
 
+.thanks-container h1 {
+  font-size: 4em;
+}
+
+.thanks-container h3 {
+  font-size: 1.5em;
+}
+
+
 /* Contact */
 .contact {
   background-image: url(img/landscape.jpg);
@@ -384,16 +393,24 @@ main {
   background-position: center;
   background-blend-mode: overlay;
   background-color: rgba(59, 59, 59, 0.7); /* Optional overlay color */;
-  height: auto;
-  padding: 20px;
+  padding: 100px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 100px;
 }
+
+.info-container {
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #162D46;
+  border-radius: 5px;
+}
+
 
 .form-container {
   max-width: 800px;
-  width: 80%;
-  margin: 50px auto;
+  width: 60%;
   padding: 20px;
   background-color: rgba(255, 255, 255, 0.3);
   color: #162D46;
@@ -401,6 +418,11 @@ main {
 }
 
 form h2 {
+  color: #162D46;
+  margin-bottom: 20px;
+}
+
+.info-container h2 {
   color: #162D46;
   margin-bottom: 20px;
 }
@@ -439,6 +461,16 @@ button[type="submit"] {
 
 button[type="submit"]:hover {
   background-color: #195319;
+}
+
+@media (max-width: 1200px) {
+  .info-container {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #162D46;
+    border-radius: 5px;
+    width: 60%;
+  }
 }
 
 /* Footer */
